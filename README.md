@@ -2,8 +2,8 @@
 
 ## Backlog
 
-- [ ] Initialize a new project
-  - [ ] Use vite
+- [x] Initialize a new project
+  - [x] Use vite
 - [ ] Add routing
   - [ ] Add react-router-dom
   - [ ] Add mui
