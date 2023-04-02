@@ -30,10 +30,10 @@
   - [x] Add Sign In button that redirects user to home page
   - [x] Add a link to Register page with a message "Don't have an account? Sign up"
 - [ ] BA-5 Add authentication ability with api
-  - [ ] Use formik
-  - [ ] Use yup
+  - [x] Use formik
+  - [x] Use yup
   - [ ] Use axios
-  - [ ] Add validation to both register and login forms
+  - [x] Add validation to both register and login forms
   - [ ] Add a [snackbar](https://material-ui.com/components/snackbars/) to show error messages
   - [ ] Add a [snackbar](https://material-ui.com/components/snackbars/) to show success messages
   - [ ] After successful register or login, redirect user to home page
