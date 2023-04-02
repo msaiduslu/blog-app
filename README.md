@@ -4,10 +4,10 @@
 
 - [x] Initialize a new project
   - [x] Use vite
-- [ ] Add routing
-  - [ ] Add react-router-dom
+- [x] Add routing
+  - [x] Add react-router-dom
   - [ ] Add mui
-  - [ ] Add home page skeleton
+  - [x] Add home page skeleton
   - [ ] Add layout component with mui navbar with two links (home, about)
     - [ ] Add profile button
       - [ ] Add logout button
