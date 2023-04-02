@@ -13,16 +13,16 @@
       - [x] Add logout button
   - [ ] Add footer component
   - [x] Add about page skeleton
-- [ ] BA-3 Add register page
-  - [ ] Add form with the following fields
-    - [ ] Username
-    - [ ] Email
-    - [ ] Avatar image
-    - [ ] Bio
-    - [ ] Password
-    - [ ] Confirm Password
-  - [ ] Add Submit button that redirects user to home page
-  - [ ] Add a link to Login page with a message "Already have an account? Sign in"
+- [x] BA-3 Add register page
+  - [x] Add form with the following fields
+    - [x] Username
+    - [x] Email
+    - [x] Avatar image
+    - [x] Bio
+    - [x] Password
+    - [x] Confirm Password
+  - [x] Add Submit button that redirects user to home page
+  - [x] Add a link to Login page with a message "Already have an account? Sign in"
 - [x] BA-4 Add login page
   - [x] Add form with the following fields
     - [x] Email
