@@ -2,18 +2,18 @@
 
 ## Backlog
 
-- [x] Initialize a new project
+- [x] BA-1 Initialize a new project
   - [x] Use vite
-- [x] Add routing
+- [x] BA-2 Add routing
   - [x] Add react-router-dom
-  - [ ] Add mui
+  - [x] Add mui
   - [x] Add home page skeleton
-  - [ ] Add layout component with mui navbar with two links (home, about)
-    - [ ] Add profile button
-      - [ ] Add logout button
+  - [x] Add layout component with mui navbar with two links (home, about)
+    - [x] Add profile button
+      - [x] Add logout button
   - [ ] Add footer component
-  - [ ] Add about page skeleton
-- [ ] Add register page
+  - [x] Add about page skeleton
+- [ ] BA-3 Add register page
   - [ ] Add form with the following fields
     - [ ] Username
     - [ ] Email
@@ -23,13 +23,13 @@
     - [ ] Confirm Password
   - [ ] Add Submit button that redirects user to home page
   - [ ] Add a link to Login page with a message "Already have an account? Sign in"
-- [ ] Add login page
-  - [ ] Add form with the following fields
-    - [ ] Email
-    - [ ] Password
-  - [ ] Add Sign In button that redirects user to home page
-  - [ ] Add a link to Register page with a message "Don't have an account? Sign up"
-- [ ] Add authentication ability with api
+- [x] BA-4 Add login page
+  - [x] Add form with the following fields
+    - [x] Email
+    - [x] Password
+  - [x] Add Sign In button that redirects user to home page
+  - [x] Add a link to Register page with a message "Don't have an account? Sign up"
+- [ ] BA-5 Add authentication ability with api
   - [ ] Use formik
   - [ ] Use yup
   - [ ] Use axios
@@ -37,13 +37,13 @@
   - [ ] Add a [snackbar](https://material-ui.com/components/snackbars/) to show error messages
   - [ ] Add a [snackbar](https://material-ui.com/components/snackbars/) to show success messages
   - [ ] After successful register or login, redirect user to home page
-- [ ] Add redux store
+- [ ] BA-6 Add redux store
   - [ ] Add redux toolkit
   - [ ] Add redux logger
   - [ ] Add redux devtools
   - [ ] Add redux persist
   - [ ] Add auth slice
-- [ ] Add authentication custom hook and use it in register and login pages
+- [ ] BA-7 Add authentication custom hook and use it in register and login pages
   - [ ] Add `useAuth` hook
   - [ ] Store user data along with accessToken in redux store
   - [ ] Store loading and error states in redux store
@@ -51,7 +51,7 @@
   - [ ] Add protected route component
     - [ ] Use protected route component in (home, about) pages
   - [ ] Logout user when user clicks on logout button
-- [ ] Implement home page
+- [ ] BA-8 Implement home page
   - [ ] Add a list of posts
   - [ ] Add post title
   - [ ] Add post summary
@@ -64,8 +64,8 @@
   - [ ] Add a link to post details page
   - [ ] When user clicks on post card, redirect user to post details page
   - [ ] Add a button to navbar with "Add Post"
-- [ ] Implement about page
-- [ ] Add post display page
+- [ ] BA-9 Implement about page
+- [ ] BA-10 Add post display page
   - [ ] Add post title
   - [ ] Add post image
   - [ ] Add post content
@@ -75,7 +75,7 @@
     - [ ] Add post date
   - [ ] Add like button
   - [ ] Add views counter
-- [ ] Add comment ability to posts
+- [ ] BA-11 Add comment ability to posts
   - [ ] Add comment button on post details page
   - [ ] Add comment form
   - [ ] List comments
@@ -85,7 +85,7 @@
     - [ ] Add comment date
     - [ ] Add comment content
     - [ ] Add comment avatar
-- [ ] Implement logout functionality
+- [ ] BA-12 Implement logout functionality
   - [ ] Add logout button to navbar
   - [ ] Add logout functionality
   - [ ] Redirect user to login page after logout
