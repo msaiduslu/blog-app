@@ -11,9 +11,13 @@ import { useNavigate, Link } from "react-router-dom";
 import { Form, Formik } from "formik";
 import { object, string } from "yup";
 import LoadingButton from "@mui/lab/LoadingButton";
+import useAuthCall from "../hooks/useAuthCall";
+import { useSelector } from "react-redux";
+import { Snackbar } from "@mui/material";
 
 export default function Login() {
-  const navigate = useNavigate();
+  const { login } = useAuthCall();
+  const { error } = useSelector((state) => state.auth);
 
   const loginSchema = object({
     email: string().email().required(),
@@ -51,9 +55,9 @@ export default function Login() {
           initialValues={{ email: "", password: "" }}
           validationSchema={loginSchema}
           onSubmit={(values, actions) => {
+            login(values);
             actions.resetForm();
             actions.setSubmitting(false);
-            //navigate
           }}
         >
           {({ values, errors, touched, handleChange, handleBlur }) => (

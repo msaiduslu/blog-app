@@ -22,10 +22,11 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import { Form, Formik } from "formik";
 import { object, string } from "yup";
+import useAuthCall from "../hooks/useAuthCall";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
+  const { register } = useAuthCall();
 
   const loginSchema = object({
     username: string().max(10, "must be below 10 character").required(),
@@ -44,11 +45,6 @@ const Register = () => {
     image: string().url("you must be enter valid url").nullable(),
     bio: string(),
   });
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    navigate("/");
-  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -77,13 +73,18 @@ const Register = () => {
           }}
           validationSchema={loginSchema}
           onSubmit={(values, actions) => {
+            register({
+              ...values,
+              first_name: "",
+              last_name: "",
+              password2: values.password,
+            });
             actions.resetForm();
             actions.setSubmitting(false);
-            //navigate
           }}
         >
           {({ values, errors, touched, handleChange, handleBlur }) => (
-            <Form component="form" onSubmit={handleSubmit} noValidate>
+            <Form>
               <TextField
                 type="text"
                 margin="dense"

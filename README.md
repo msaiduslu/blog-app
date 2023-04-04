@@ -32,17 +32,17 @@
 - [ ] BA-5 Add authentication ability with api
   - [x] Use formik
   - [x] Use yup
-  - [ ] Use axios
+  - [x] Use axios
   - [x] Add validation to both register and login forms
-  - [ ] Add a [snackbar](https://material-ui.com/components/snackbars/) to show error messages
-  - [ ] Add a [snackbar](https://material-ui.com/components/snackbars/) to show success messages
-  - [ ] After successful register or login, redirect user to home page
+  - [x] Add a [snackbar](https://material-ui.com/components/snackbars/) to show error messages
+  - [x] Add a [snackbar](https://material-ui.com/components/snackbars/) to show success messages
+  - [x] After successful register or login, redirect user to home page
 - [ ] BA-6 Add redux store
-  - [ ] Add redux toolkit
+  - [x] Add redux toolkit
   - [ ] Add redux logger
   - [ ] Add redux devtools
   - [ ] Add redux persist
-  - [ ] Add auth slice
+  - [x] Add auth slice
 - [ ] BA-7 Add authentication custom hook and use it in register and login pages
   - [ ] Add `useAuth` hook
   - [ ] Store user data along with accessToken in redux store

@@ -11,22 +11,24 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { useState } from "react";
 import image from "../assets/header.png";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import useAuthCall from "../hooks/useAuthCall";
 
 const pages = [
   { name: "Home", url: "/" },
   { name: "New Post", url: "/new-post" },
   { name: "About", url: "/about" },
 ];
-const settings = ["My Posts", "Profile", "Logout"];
 
 function Navbar() {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const { currentUser } = useSelector((state) => state.auth);
+  const { logout } = useAuthCall();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -103,36 +105,76 @@ function Navbar() {
               </Button>
             ))}
           </Box>
+          {currentUser ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar>R</Avatar>
+                </IconButton>
+              </Tooltip>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar>R</Avatar>
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <Box>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography
+                      textAlign="center"
+                      onClick={() => navigate("/my-posts")}
+                    >
+                      My Posts
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography
+                      textAlign="center"
+                      onClick={() => navigate("/profile")}
+                    >
+                      Profile
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center" onClick={() => logout()}>
+                      Logout
+                    </Typography>
+                  </MenuItem>
+                </Box>
+              </Menu>
+            </Box>
+          ) : (
+            <Box sx={{ display: "flex", gap: 2 }}>
+              <Typography
+                component={Button}
+                color={"inherit"}
+                textAlign="center"
+                onClick={() => navigate("/register")}
+              >
+                Register
+              </Typography>
+
+              <Typography
+                component={Button}
+                color={"inherit"}
+                textAlign="center"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </Typography>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
