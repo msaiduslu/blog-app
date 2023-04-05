@@ -39,18 +39,17 @@
   - [x] After successful register or login, redirect user to home page
 - [ ] BA-6 Add redux store
   - [x] Add redux toolkit
-  - [ ] Add redux logger
-  - [ ] Add redux devtools
-  - [ ] Add redux persist
+  - [x] Add redux devtools
+  - [x] Add redux persist
   - [x] Add auth slice
 - [ ] BA-7 Add authentication custom hook and use it in register and login pages
-  - [ ] Add `useAuth` hook
-  - [ ] Store user data along with accessToken in redux store
-  - [ ] Store loading and error states in redux store
-  - [ ] Use `useAuth` hook in register and login pages
-  - [ ] Add protected route component
-    - [ ] Use protected route component in (home, about) pages
-  - [ ] Logout user when user clicks on logout button
+  - [x] Add `useAuth` hook
+  - [x] Store user data along with accessToken in redux store
+  - [x] Store loading and error states in redux store
+  - [x] Use `useAuth` hook in register and login pages
+  - [x] Add protected route component
+    - [x] Use protected route component in (home, about) pages
+  - [x] Logout user when user clicks on logout button
 - [ ] BA-8 Implement home page
   - [ ] Add a list of posts
   - [ ] Add post title
