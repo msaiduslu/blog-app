@@ -20,10 +20,11 @@ const useAuthCall = () => {
     try {
       const { data } = await axios.post(`${BASE_URL}users/register/`, userInfo);
       dispatch(registerSuccess(data));
-      console.log(data);
+      dispatch(show({ message: "Register Success", status: "success" }));
       navigate("/");
     } catch (error) {
       dispatch(fetchFail());
+      dispatch(show({ message: "Register Failed", status: "error" }));
     }
   };
 
@@ -38,6 +39,7 @@ const useAuthCall = () => {
       dispatch(show({ message: "Login Success", status: "success" }));
       navigate("/");
     } catch (error) {
+      dispatch(show({ message: "Login Failed", status: "error" }));
       dispatch(fetchFail());
     }
   };
@@ -46,12 +48,12 @@ const useAuthCall = () => {
     dispatch(fetchStart);
     try {
       await axios.post(`${BASE_URL}users/auth/logout/`);
-      console.log("1");
       dispatch(logoutSuccess());
-      console.log("2");
+      dispatch(show({ message: "Logout Success", status: "success" }));
       navigate("/");
     } catch (error) {
       dispatch(fetchFail);
+      dispatch(show({ message: "Logout Failed", status: "error" }));
     }
   };
   return { register, login, logout };

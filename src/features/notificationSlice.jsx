@@ -15,6 +15,8 @@ const notificationSlice = createSlice({
     },
     hide: (state) => {
       state.visible = false;
+      state.status = null;
+      state.message = null;
     },
   },
 });

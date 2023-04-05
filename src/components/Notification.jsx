@@ -22,6 +22,9 @@ const Notification = () => {
   const handleClose = () => {
     dispatch(hide());
   };
+
+  if (!visible) return null;
+
   return (
     <>
       <Snackbar
