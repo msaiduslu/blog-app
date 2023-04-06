@@ -24,10 +24,12 @@ const usePostCall = () => {
   const likesCreate = async (id) => {
     dispatch(postFetchStart());
     try {
-      await axios.post(`${BASE_URL}likes/${id}/`, {
+      await axios({
+        method: "POST",
+        url: `${BASE_URL}likes/${id}/`,
         headers: { Authorization: `Token ${token}` },
       });
-      console.log("like");
+      await getPostList();
     } catch (error) {
       dispatch(postFetchFail());
     }

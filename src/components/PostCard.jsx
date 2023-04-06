@@ -13,17 +13,20 @@ import { Box, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import usePostCall from "../hooks/usePostCall";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function PostCard({ post }) {
   const date = post.publish_date.split("T")[0];
   const time = post.publish_date.split("T")[1].split(".")[0];
   const navigate = useNavigate();
   const { likesCreate } = usePostCall();
-  const [likeButtonColor, setLikeButtonColor] = useState(false);
+
+  const { currentUser } = useSelector((state) => state.auth);
 
   const handleLikes = () => {
-    likesCreate(post.id);
-    setLikeButtonColor(!likeButtonColor);
+    if (currentUser) {
+      likesCreate(post.id);
+    }
   };
   return (
     <Card elevation={6} sx={{ width: 345, margin: "auto" }}>
@@ -77,7 +80,7 @@ export default function PostCard({ post }) {
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box>
           <IconButton onClick={handleLikes}>
-            <FavoriteIcon color={likeButtonColor ? "error" : "inherit"} />
+            <FavoriteIcon color={post.likes ? "error" : "inherit"} />
             {post.likes}
           </IconButton>
           <IconButton>

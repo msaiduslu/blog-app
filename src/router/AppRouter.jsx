@@ -7,6 +7,7 @@ import About from "../pages/About";
 import Login from "../pages/Login";
 import NewPost from "../pages/NewPost";
 import Register from "../pages/Register";
+import Footer from "../components/Footer";
 
 const AppRouter = () => {
   return (
@@ -21,6 +22,7 @@ const AppRouter = () => {
         </Route>
         <Route path="about" element={<About />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
