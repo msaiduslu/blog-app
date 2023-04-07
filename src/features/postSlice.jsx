@@ -4,6 +4,7 @@ const postSlice = createSlice({
   name: "posts",
   initialState: {
     posts: [],
+    categories: [],
     loading: false,
     error: false,
   },
@@ -11,6 +12,11 @@ const postSlice = createSlice({
     postFetchStart: (state) => {
       state.loading = true;
       state.error = false;
+    },
+
+    setCategoryList: (state, { payload }) => {
+      state.categories = payload;
+      state.loading = false;
     },
 
     setPostList: (state, { payload }) => {
@@ -24,5 +30,6 @@ const postSlice = createSlice({
   },
 });
 
-export const { postFetchStart, setPostList, postFetchFail } = postSlice.actions;
+export const { postFetchStart, setPostList, postFetchFail, setCategoryList } =
+  postSlice.actions;
 export default postSlice.reducer;
