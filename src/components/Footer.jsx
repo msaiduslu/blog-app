@@ -9,7 +9,7 @@ const Footer = () => {
       variant="outlined"
       sx={{
         position: "fixed",
-        bottom: 5,
+        bottom: 0,
         right: 0,
         left: 0,
         width: "100%",
@@ -19,7 +19,7 @@ const Footer = () => {
       }}
     >
       <Typography margin={"auto"} variant="body1" align="center" gutterBottom>
-        Copyright © MsaidUSLU 2023
+        Copyright © MsaidUSLU {new Date().getFullYear()}
       </Typography>
     </Paper>
   );
