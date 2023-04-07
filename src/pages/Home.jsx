@@ -17,9 +17,9 @@ const Home = () => {
 
   return (
     <>
-      <Grid container spacing={2} marginTop={1}>
+      <Grid container spacing={2} marginTop={1} marginBottom={8}>
         {posts.map((post) => (
-          <Grid key={post.id} item xs={12} md={6} lg={4}>
+          <Grid key={post.id} item xs={12} sm={6} md={4} lg={3}>
             <PostCard post={post} />
           </Grid>
         ))}

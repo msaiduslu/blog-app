@@ -28,6 +28,7 @@ export default function PostCard({ post }) {
       likesCreate(post.id);
     }
   };
+
   return (
     <Card elevation={6} sx={{ width: 345, margin: "auto" }}>
       <CardMedia
@@ -93,7 +94,7 @@ export default function PostCard({ post }) {
           </IconButton>
         </Box>
         <Button
-          onClick={() => navigate("/new-post")}
+          onClick={() => navigate(`/post-detail/${post.id}`)}
           size="small"
           color="primary"
           variant="contained"

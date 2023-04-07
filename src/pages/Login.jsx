@@ -17,7 +17,7 @@ import { Snackbar } from "@mui/material";
 
 export default function Login() {
   const { login } = useAuthCall();
-  const { error } = useSelector((state) => state.auth);
+  const { loading } = useSelector((state) => state.auth);
 
   const loginSchema = object({
     email: string().email().required(),
@@ -89,6 +89,7 @@ export default function Login() {
                 helperText={touched.password && errors.password}
               />
               <LoadingButton
+                loading={loading}
                 type="submit"
                 fullWidth
                 variant="contained"
