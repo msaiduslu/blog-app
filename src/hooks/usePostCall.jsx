@@ -5,10 +5,12 @@ import {
   postFetchStart,
   setCategoryList,
   setPostList,
+  setUserPosts,
 } from "../features/postSlice";
 import { show } from "../features/notificationSlice";
 
 const usePostCall = () => {
+  const { userId } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const BASE_URL = "http://32182.fullstack.clarusway.com/api/";
   const { token } = useSelector((state) => state.auth);
@@ -41,6 +43,7 @@ const usePostCall = () => {
         headers: { Authorization: `Token ${token}` },
       });
       await getPostList();
+      await getUserPosts(userId);
     } catch (error) {
       dispatch(postFetchFail());
     }
@@ -55,15 +58,37 @@ const usePostCall = () => {
         headers: { Authorization: `Token ${token}` },
         data: info,
       });
+      console.log("1");
       dispatch(
         show({ message: "Post created successfuly", status: "success" })
       );
+      console.log("2");
     } catch (error) {
       dispatch(postFetchFail());
       dispatch(show({ message: "Post create failed", status: "error" }));
     }
   };
 
-  return { getPostList, likesCreate, getCategoryList, postCreate };
+  const getUserPosts = async (userId) => {
+    dispatch(postFetchStart());
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: `${BASE_URL}blogs/?author=${userId}`,
+        headers: { Authorization: `Token ${token}` },
+      });
+      dispatch(setUserPosts(data));
+    } catch (error) {
+      dispatch(postFetchFail());
+    }
+  };
+
+  return {
+    getPostList,
+    likesCreate,
+    getCategoryList,
+    postCreate,
+    getUserPosts,
+  };
 };
 export default usePostCall;
