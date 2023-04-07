@@ -7,6 +7,7 @@ import {
   Paper,
   Select,
   TextField,
+  Typography,
 } from "@mui/material";
 import React from "react";
 import usePostCall from "../hooks/usePostCall";
@@ -25,7 +26,8 @@ const NewPostForm = ({ categories }) => {
   const { postCreate } = usePostCall();
   const { loading } = useSelector((state) => state.posts);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault;
     const info = {
       title: title,
       image: image,
@@ -43,12 +45,15 @@ const NewPostForm = ({ categories }) => {
         flexDirection: "column",
         gap: 2,
         p: 2,
-        boxShadow: 22,
+        boxShadow: "21px 16px 26px 2px rgba(89 109 222 / 0.45)",
         borderRadius: 3,
       }}
       component="form"
       onSubmit={handleSubmit}
     >
+      <Typography variant="h6" color="primary">
+        New Post
+      </Typography>
       <TextField
         label="Title"
         name="title"
@@ -111,7 +116,7 @@ const NewPostForm = ({ categories }) => {
         required
         value={content}
         multiline
-        minRows={4}
+        minRows={3}
         onChange={(e) => setContent(e.target.value)}
       />
       <LoadingButton
@@ -119,7 +124,7 @@ const NewPostForm = ({ categories }) => {
         type="submit"
         fullWidth
         variant="contained"
-        sx={{ mt: 3, mb: 2 }}
+        sx={{ mt: 2, mb: 1 }}
       >
         NEW POST
       </LoadingButton>
