@@ -12,7 +12,6 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Box, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import usePostCall from "../hooks/usePostCall";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function PostCard({ post }) {
@@ -94,7 +93,7 @@ export default function PostCard({ post }) {
           </IconButton>
         </Box>
         <Button
-          onClick={() => navigate(`/post-detail/${post.id}`)}
+          onClick={() => navigate(`/post-detail/${post.id}`, post.id)}
           size="small"
           color="primary"
           variant="contained"
