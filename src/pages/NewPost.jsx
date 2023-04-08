@@ -27,7 +27,7 @@ const NewPostForm = ({ categories }) => {
   const { loading } = useSelector((state) => state.posts);
 
   const handleSubmit = (e) => {
-    e.preventDefault;
+    e.preventDefault();
     const info = {
       title: title,
       image: image,
@@ -35,7 +35,13 @@ const NewPostForm = ({ categories }) => {
       status: status,
       content: content,
     };
+
     postCreate(info);
+    setTitle("");
+    setImage("");
+    setCategory("");
+    setStatus("");
+    setContent("");
   };
 
   return (
