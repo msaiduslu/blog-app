@@ -8,6 +8,7 @@ const postSlice = createSlice({
     userPosts: [],
     loading: false,
     error: false,
+    postDetail: [],
   },
   reducers: {
     postFetchStart: (state) => {
@@ -28,6 +29,15 @@ const postSlice = createSlice({
       state.userPosts = payload;
       state.loading = false;
     },
+    setPostDetail: (state, { payload }) => {
+      state.postDetail = payload;
+      state.loading = false;
+    },
+
+    postCreated: (state) => {
+      state.loading = false;
+      state.error = false;
+    },
     postFetchFail: (state) => {
       state.loading = false;
       state.error = true;
@@ -41,5 +51,7 @@ export const {
   postFetchFail,
   setCategoryList,
   setUserPosts,
+  postCreated,
+  setPostDetail,
 } = postSlice.actions;
 export default postSlice.reducer;

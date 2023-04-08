@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  postCreated,
   postFetchFail,
   postFetchStart,
   setCategoryList,
+  setPostDetail,
   setPostList,
   setUserPosts,
 } from "../features/postSlice";
@@ -58,11 +60,10 @@ const usePostCall = () => {
         headers: { Authorization: `Token ${token}` },
         data: info,
       });
-      console.log("1");
       dispatch(
         show({ message: "Post created successfuly", status: "success" })
       );
-      console.log("2");
+      dispatch(postCreated());
     } catch (error) {
       dispatch(postFetchFail());
       dispatch(show({ message: "Post create failed", status: "error" }));
@@ -82,6 +83,19 @@ const usePostCall = () => {
       dispatch(postFetchFail());
     }
   };
+  const getPostDetail = async (postId) => {
+    dispatch(postFetchStart());
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: `${BASE_URL}blogs/${postId}`,
+        headers: { Authorization: `Token ${token}` },
+      });
+      dispatch(setPostDetail(data));
+    } catch (error) {
+      dispatch(postFetchFail());
+    }
+  };
 
   return {
     getPostList,
@@ -89,6 +103,7 @@ const usePostCall = () => {
     getCategoryList,
     postCreate,
     getUserPosts,
+    getPostDetail,
   };
 };
 export default usePostCall;
