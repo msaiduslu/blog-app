@@ -22,13 +22,19 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
 import { blueGrey } from "@mui/material/colors";
+import PostModal from "../components/PostModal";
+import { useNavigate } from "react-router-dom";
+import Comments from "../components/Comments";
 
 const PostDetail = () => {
+  const navigate = useNavigate();
   const [showComment, setShowComment] = useState(false);
   const [comment, setComment] = useState("");
+  const [open, setOpen] = useState(false);
   const { id } = useParams();
   const { postDetail } = useSelector((state) => state.posts);
-  const { getPostDetail } = usePostCall();
+  const { getPostDetail, getCategoryList, postDelete, commentCreate } =
+    usePostCall();
   const { currentUser } = useSelector((state) => state.auth);
 
   const handleLikes = () => {
@@ -39,13 +45,22 @@ const PostDetail = () => {
 
   useEffect(() => {
     getPostDetail(id);
+    getCategoryList();
   }, []);
-  console.log(postDetail);
 
-  // const date = postDetail.publish_date.split("T")[0];
-  // const time = postDetail.publish_date.split("T")[1].split(".")[0];
+  const handleDelete = () => {
+    postDelete(postDetail.id);
+    navigate("/");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const infoComment = { post: postDetail.id, content: comment };
+    commentCreate(postDetail.id, infoComment);
+    setComment("");
+  };
   return (
-    <Container maxWidth={"md"} sx={{ marginTop: "1rem" }}>
+    <Container maxWidth={"md"} sx={{ marginTop: "1rem", marginBottom: "3rem" }}>
       <Box sx={{ width: "100%", margin: "auto" }}>
         <CardMedia
           sx={{
@@ -54,6 +69,7 @@ const PostDetail = () => {
             maxWidth: "100%",
             objectFit: "contain",
             p: "1em 1em 0 1em",
+            component: "img",
           }}
           image={postDetail.image}
           title={postDetail.title}
@@ -65,10 +81,14 @@ const PostDetail = () => {
             alignItems={"center"}
             sx={{ gap: 2, marginBottom: 2 }}
           >
-            <Avatar sx={{ bgcolor: "#002884" }}>N</Avatar>
+            <Avatar sx={{ bgcolor: "#002884" }}>
+              {postDetail?.author?.charAt(0).toUpperCase()}
+            </Avatar>
             <Box>
               <Typography>{postDetail.author}</Typography>
-              <Typography>date</Typography>
+              <Typography>
+                {new Date(postDetail.publish_date).toLocaleString()}
+              </Typography>
             </Box>
           </Box>
           <Typography
@@ -104,32 +124,53 @@ const PostDetail = () => {
       </Box>
       {currentUser && currentUser === postDetail.author && (
         <Box display="flex" justifyContent="center" gap={5} marginTop={3}>
-          <Button color="success" variant="contained">
+          <Button
+            color="success"
+            variant="contained"
+            onClick={() => setOpen(!open)}
+          >
             Update Post
           </Button>
-          <Button color="error" variant="contained">
+          <Button color="error" variant="contained" onClick={handleDelete}>
             Delete Post
           </Button>
+          <PostModal postDetail={postDetail} setOpen={setOpen} open={open} />
         </Box>
       )}
       {showComment && (
-        <Box component="form" marginTop={5} sx={{ textAlign: "end" }}>
-          <TextField
-            label="Type your comment here..."
-            name="comment"
-            id="comment"
-            type="text"
-            variant="outlined"
-            required
-            multiline
-            fullWidth
-            value={comment}
-            minRows={3}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <Button type="submit" variant="contained" sx={{ marginTop: "1rem" }}>
-            Send
-          </Button>
+        <Box>
+          <Box>
+            {postDetail.comments.map((comment) => (
+              <Comments key={comment.id} comment={comment} />
+            ))}
+          </Box>
+          <Box
+            component="form"
+            marginTop={5}
+            sx={{ textAlign: "end" }}
+            onSubmit={handleSubmit}
+          >
+            <TextField
+              label="Type your comment here..."
+              name="comment"
+              id="comment"
+              type="text"
+              variant="outlined"
+              required
+              multiline
+              fullWidth
+              value={comment}
+              minRows={3}
+              onChange={(e) => setComment(e.target.value)}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ marginTop: "1rem" }}
+            >
+              Send
+            </Button>
+          </Box>
         </Box>
       )}
     </Container>
