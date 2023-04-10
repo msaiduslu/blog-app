@@ -47,7 +47,7 @@ function Navbar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Toolbar disableGutters>
           <img width={100} height={50} src={image} alt="" />
 
