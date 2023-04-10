@@ -15,8 +15,6 @@ import usePostCall from "../hooks/usePostCall";
 import { useSelector } from "react-redux";
 
 export default function PostCard({ post }) {
-  const date = post.publish_date.split("T")[0];
-  const time = post.publish_date.split("T")[1].split(".")[0];
   const navigate = useNavigate();
   const { likesCreate } = usePostCall();
 
@@ -68,7 +66,7 @@ export default function PostCard({ post }) {
         }}
       >
         <Typography component="div" variant="body2" color="text.secondary">
-          {`${date}, ${time}`}
+          {new Date(post.publish_date).toLocaleString()}
         </Typography>
         <Typography component="div" variant="body2" color="primary">
           <IconButton>
