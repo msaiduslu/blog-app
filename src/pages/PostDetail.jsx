@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   Button,
-  Card,
   CardActions,
   CardContent,
   CardMedia,
@@ -18,19 +17,19 @@ import usePostCall from "../hooks/usePostCall";
 import { useEffect } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
-import { blueGrey } from "@mui/material/colors";
 import PostModal from "../components/PostModal";
 import { useNavigate } from "react-router-dom";
 import Comments from "../components/Comments";
+import DeleteModal from "../components/DeleteModal";
 
 const PostDetail = () => {
   const navigate = useNavigate();
   const [showComment, setShowComment] = useState(false);
   const [comment, setComment] = useState("");
   const [open, setOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
   const { id } = useParams();
   const { postDetail } = useSelector((state) => state.posts);
   const { getPostDetail, getCategoryList, postDelete, commentCreate } =
@@ -131,10 +130,19 @@ const PostDetail = () => {
           >
             Update Post
           </Button>
-          <Button color="error" variant="contained" onClick={handleDelete}>
+          <Button
+            color="error"
+            variant="contained"
+            onClick={() => setDeleteOpen(!deleteOpen)}
+          >
             Delete Post
           </Button>
           <PostModal postDetail={postDetail} setOpen={setOpen} open={open} />
+          <DeleteModal
+            handleDelete={handleDelete}
+            deleteOpen={deleteOpen}
+            setDeleteOpen={setDeleteOpen}
+          />
         </Box>
       )}
       {showComment && (
