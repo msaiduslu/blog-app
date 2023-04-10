@@ -34,7 +34,7 @@ const postSlice = createSlice({
       state.loading = false;
     },
 
-    postCreated: (state) => {
+    postFetchSuccess: (state) => {
       state.loading = false;
       state.error = false;
     },
@@ -51,7 +51,7 @@ export const {
   postFetchFail,
   setCategoryList,
   setUserPosts,
-  postCreated,
   setPostDetail,
+  postFetchSuccess,
 } = postSlice.actions;
 export default postSlice.reducer;
