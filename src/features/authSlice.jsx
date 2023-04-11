@@ -28,8 +28,8 @@ const authSlice = createSlice({
       state.currentUser = action?.payload?.username;
       state.token = action?.payload?.token;
       state.error = false;
-      state.userId = action?.payload?.user.id;
-      state.userEmail = action?.payload?.user.email;
+      state.userId = action?.payload?.id;
+      state.userEmail = action?.payload?.email;
     },
     logoutSuccess: (state) => {
       state.loading = false;

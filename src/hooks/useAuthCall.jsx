@@ -13,15 +13,19 @@ import { show } from "../features/notificationSlice";
 const useAuthCall = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const BASE_URL = "https://32182.fullstack.clarusway.com/";
+  const BASE_URL = "http://32182.fullstack.clarusway.com/";
 
   const register = async (userInfo) => {
     dispatch(fetchStart);
     try {
       const { data } = await axios.post(`${BASE_URL}users/register/`, userInfo);
+      console.log(data);
       dispatch(registerSuccess(data));
+      console.log("1");
       dispatch(show({ message: "Register Success", status: "success" }));
+      console.log("2");
       navigate("/");
+      console.log("3");
     } catch (error) {
       dispatch(fetchFail());
       dispatch(show({ message: "Register Failed", status: "error" }));
