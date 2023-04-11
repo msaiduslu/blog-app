@@ -14,7 +14,7 @@ import { show } from "../features/notificationSlice";
 const usePostCall = () => {
   const { userId } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const BASE_URL = "http://32182.fullstack.clarusway.com/api/";
+  const BASE_URL = "https://32182.fullstack.clarusway.com/api/";
   const { token } = useSelector((state) => state.auth);
 
   const getPostList = async () => {
