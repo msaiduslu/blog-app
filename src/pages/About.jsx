@@ -40,6 +40,7 @@ const About = () => {
             maxWidth: "100%",
             objectFit: "contain",
             p: "1em 1em 0 1em",
+            component: "img",
           }}
           image={about}
           title="Profile"

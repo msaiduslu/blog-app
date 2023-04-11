@@ -34,6 +34,7 @@ export default function PostCard({ post }) {
           maxWidth: 345,
           objectFit: "contain",
           p: "1em 1em 0 1em",
+          component: "img",
         }}
         image={post.image}
         title={post.title}

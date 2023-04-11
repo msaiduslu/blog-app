@@ -38,6 +38,7 @@ const Profile = () => {
           }}
           image={profile}
           title="Profile"
+          component="img"
         />
         <CardContent
           sx={{
