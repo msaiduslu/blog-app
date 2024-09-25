@@ -21,11 +21,8 @@ const useAuthCall = () => {
       const { data } = await axios.post(`${BASE_URL}users/register/`, userInfo);
       console.log(data);
       dispatch(registerSuccess(data));
-      console.log("1");
       dispatch(show({ message: "Register Success", status: "success" }));
-      console.log("2");
       navigate("/");
-      console.log("3");
     } catch (error) {
       dispatch(fetchFail());
       dispatch(show({ message: "Register Failed", status: "error" }));

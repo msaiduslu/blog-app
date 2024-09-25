@@ -1,5 +1,59 @@
 # React Blog App
 
+### Following topics are to be covered;
+
+- React, Redux TK and persist, JS, Tailwind, Material-UI, Formik, Yup.
+
+## Project Skeleton
+
+```
+Blog App (folder)
+|
+|---readme.md
+├── dist
+│    ├── assets
+│    ├── favicon.ico
+│    └── index.html
+├── src
+│    ├── store
+│    │     ├── store.jsx
+│    │
+│    ├── features
+│    │     ├── authSlice.jsx
+│    │     └── postSlice.jsx
+│    ├     └── notificationSlice.jsx
+│    ├── hooks
+│    │     ├── useAuthCall.jsx
+│    │     └── usePostCall.jsx
+│    ├── components
+│    │     ├── Comments.jsx
+│    │     ├── DeleteModal.jsx
+│    │     ├── Footer.jsx
+│    │     ├── Navbar.jsx
+│    │     ├── CommentForm.jsx
+│    │     ├── Notification.jsx
+│    │     ├── PostCard.jsx
+│    │     └── PostModal.jsx
+│    │
+│    ├── pages
+│    │     ├── About.jsx
+│    │     ├── Home.jsx
+│    │     ├── Login.jsx
+│    │     ├── Register.jsx
+│    │     ├── MyPosts.jsx
+│    │     ├── NewPost.jsx
+│    │     ├── PostDetail.jsx
+│    │     └── Profile.jsx
+│    ├── routers
+│    │     ├── AppRouter.jsx
+│    │     └── PrivateRouter.jsx
+│    ├── App.jsx
+│    ├── Main.jsx
+│
+├── package.json
+└── vite.config.js
+```
+
 ## Backlog
 
 - [x] BA-1 Initialize a new project
